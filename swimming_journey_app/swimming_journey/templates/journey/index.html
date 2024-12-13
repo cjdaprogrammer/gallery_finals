@@ -1,0 +1,287 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Swimming Journey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #00b4d8, #0077b6, #023e8a);
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        header {
+            background-color: rgba(0, 119, 182, 0.95);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 2rem;
+            line-height: 1.8;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .content {
+            padding: 30px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .story {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            line-height: 1.6;
+            padding: 15px;
+            background: rgba(0, 119, 182, 0.75);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin: 20px auto;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .gallery img {
+            width: 400px;
+            height: 250px;
+            object-fit: cover;
+            border: 6px solid #00b4d8;
+            border-radius: 15px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeIn 1.5s ease;
+            will-change: transform, box-shadow;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gallery img:nth-child(odd) {
+            animation-delay: 0.2s;
+        }
+
+        .gallery img:nth-child(even) {
+            animation-delay: 0.4s;
+        }
+
+        footer {
+            background-color: rgba(0, 119, 182, 0.95);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 1rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Bubble animation */
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: rise 12s infinite ease-in;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0) scale(0.5);
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* More randomized bubble sizes */
+        .bubble:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            left: 10%;
+            animation-duration: 14s;
+            animation-delay: 0s;
+        }
+
+        .bubble:nth-child(2) {
+            width: 50px;
+            height: 50px;
+            left: 30%;
+            animation-duration: 10s;
+            animation-delay: 2s;
+        }
+
+        .bubble:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            left: 50%;
+            animation-duration: 16s;
+            animation-delay: 4s;
+        }
+
+        .bubble:nth-child(4) {
+            width: 70px;
+            height: 70px;
+            left: 70%;
+            animation-duration: 8s;
+            animation-delay: 6s;
+        }
+
+        .bubble:nth-child(5) {
+            width: 40px;
+            height: 40px;
+            left: 90%;
+            animation-duration: 12s;
+            animation-delay: 8s;
+        }
+
+        /* Add more bubbles */
+        .bubble:nth-child(6) {
+            width: 60px;
+            height: 60px;
+            left: 20%;
+            animation-duration: 12s;
+            animation-delay: 10s;
+        }
+
+        .bubble:nth-child(7) {
+            width: 90px;
+            height: 90px;
+            left: 40%;
+            animation-duration: 15s;
+            animation-delay: 3s;
+        }
+
+        .bubble:nth-child(8) {
+            width: 110px;
+            height: 110px;
+            left: 60%;
+            animation-duration: 18s;
+            animation-delay: 7s;
+        }
+
+        .bubble:nth-child(9) {
+            width: 50px;
+            height: 50px;
+            left: 80%;
+            animation-duration: 10s;
+            animation-delay: 12s;
+        }
+
+        .bubble:nth-child(10) {
+            width: 120px;
+            height: 120px;
+            left: 90%;
+            animation-duration: 20s;
+            animation-delay: 5s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                font-size: 1.5rem;
+                padding: 30px 15px;
+            }
+
+            .gallery {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .gallery img {
+                width: 90%;
+                max-width: 300px;
+            }
+
+            .story {
+                font-size: 1rem;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Bubbles -->
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <header>
+        <h1>My Swimming Journey</h1>
+        <p>A Splash of Success</p>
+    </header>
+
+    <div class="content">
+        <h2>Highlights</h2>
+
+        <!-- Personal Story -->
+        <div class="story">
+            <p><strong>When I was a child, I never imagined I would become a swimmer someday. I was terrified of the pool because I was afraid that I might drown. I was just a kid wandering around the sports complex where my father worked. Who would have thought that the same child, so afraid of the water, would grow up to be an athlete and represent my school?</strong></p>
+
+            <p>I started my swimming journey in Grade 6. I never imagined I'd actually learn to swim, as I was just watching the swimmers train in the pool. I tried it and, surprisingly, I was able to swim. So, my father suggested that I start swimming seriously. He hired a swimming coach.</p>
+
+            <p>When I was in high school, I started competing. At first, as expected, it wasn't very successful. But that didn't stop me from dreaming of becoming a professional swimmer someday. So, I trained hard, six times a week, to achieve my goal.</p>
+
+            <p>All my hard work finally paid off. I started earning medals, from bronze to gold. My school recognized my achievements and asked me to represent them in competitions in other regions. I started with three medals and eventually collected six in a single competition.</p>
+
+            <p>Sadly, my swimming journey ended when I started senior high school, as I lacked the time to balance studies and swimming. But I'm truly happy and content with everything I've experienced. All my achievements, hard work, and experiences have shaped my career. I hope my story will inspire others, including my future children.</p>
+        </div>
+
+        <div class="gallery">
+            <img src="{% static 'images/totoy.jpg' %}" alt="Swimming Event 1">
+            <img src="{% static 'images/swimming.jpg' %}" alt="Swimming Event 2">
+            <img src="{% static 'images/players.jpg' %}" alt="Swimming Event 3">
+            <img src="{% static 'images/champs.jpg' %}" alt="Swimming Event 4">
+            <img src="{% static 'images/medals.jpg' %}" alt="Swimming Event 5">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 My Swimming Journey</p>
+    </footer>
+</body>
+</html>
